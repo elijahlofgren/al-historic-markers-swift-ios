@@ -36,10 +36,9 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate {
         
         
         // Show a marker on a map (hard-coded for now)
-        // show artwork on map
-        let marker = Marker(title: "King David Kalakaua",
-                              name: "Waikiki Gateway Park",
-                              county: "Sculpture",
+        let marker = Marker(title: "Your location",
+                              detailedInfo: "test description",
+                              county: "N/A",
                               coordinate: CLLocationCoordinate2D(latitude: userLocation.latitude, longitude: userLocation.longitude))
         map.addAnnotation(marker)
         
