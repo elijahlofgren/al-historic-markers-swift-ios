@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2EA518D5214EB1A100619790 /* Marker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA518D4214EB1A100619790 /* Marker.swift */; };
 		2EFC5A54214D9237003029E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFC5A53214D9237003029E5 /* AppDelegate.swift */; };
 		2EFC5A57214D9237003029E5 /* AL_Historic_Markers.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2EFC5A55214D9237003029E5 /* AL_Historic_Markers.xcdatamodeld */; };
 		2EFC5A59214D9237003029E5 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFC5A58214D9237003029E5 /* MasterViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2EA518D4214EB1A100619790 /* Marker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Marker.swift; sourceTree = "<group>"; };
 		2EFC5A50214D9237003029E5 /* AL Historic Markers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AL Historic Markers.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EFC5A53214D9237003029E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2EFC5A56214D9237003029E5 /* AL_Historic_Markers.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AL_Historic_Markers.xcdatamodel; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				2EFC5A61214D9239003029E5 /* LaunchScreen.storyboard */,
 				2EFC5A64214D9239003029E5 /* Info.plist */,
 				2EFC5A55214D9237003029E5 /* AL_Historic_Markers.xcdatamodeld */,
+				2EA518D4214EB1A100619790 /* Marker.swift */,
 			);
 			path = "AL Historic Markers";
 			sourceTree = "<group>";
@@ -144,6 +147,7 @@
 				2EFC5A54214D9237003029E5 /* AppDelegate.swift in Sources */,
 				2EFC5A59214D9237003029E5 /* MasterViewController.swift in Sources */,
 				2EFC5A5B214D9237003029E5 /* DetailViewController.swift in Sources */,
+				2EA518D5214EB1A100619790 /* Marker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

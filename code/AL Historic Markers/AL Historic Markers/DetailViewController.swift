@@ -32,6 +32,17 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate {
     {
         let location = locations.last! as CLLocation
         
+        let userLocation = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        
+        
+        // Show a marker on a map (hard-coded for now)
+        // show artwork on map
+        let marker = Marker(title: "King David Kalakaua",
+                              name: "Waikiki Gateway Park",
+                              county: "Sculpture",
+                              coordinate: CLLocationCoordinate2D(latitude: userLocation.latitude, longitude: userLocation.longitude))
+        map.addAnnotation(marker)
+        
         let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         
@@ -55,7 +66,6 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate {
             locationManager.requestWhenInUseAuthorization()
             locationManager.startUpdatingLocation()
         }
-        
         
         // Do any additional setup after loading the view, typically from a nib.
         configureView()
