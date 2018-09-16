@@ -1,0 +1,6 @@
+module Pods_AL_Historic_Markers {
+  umbrella header "Pods-AL Historic Markers-umbrella.h"
+
+  export *
+  module * { export * }
+}

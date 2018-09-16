@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2EA518D5214EB1A100619790 /* Marker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA518D4214EB1A100619790 /* Marker.swift */; };
+		2EAA2902214EFE5900D0F19C /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 2EAA2901214EFE5900D0F19C /* Podfile */; };
 		2EFC5A54214D9237003029E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFC5A53214D9237003029E5 /* AppDelegate.swift */; };
 		2EFC5A57214D9237003029E5 /* AL_Historic_Markers.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2EFC5A55214D9237003029E5 /* AL_Historic_Markers.xcdatamodeld */; };
 		2EFC5A59214D9237003029E5 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFC5A58214D9237003029E5 /* MasterViewController.swift */; };
@@ -15,10 +16,13 @@
 		2EFC5A5E214D9237003029E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EFC5A5C214D9237003029E5 /* Main.storyboard */; };
 		2EFC5A60214D9239003029E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2EFC5A5F214D9239003029E5 /* Assets.xcassets */; };
 		2EFC5A63214D9239003029E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EFC5A61214D9239003029E5 /* LaunchScreen.storyboard */; };
+		7CD09FD94007751072FF96F6 /* libPods-AL Historic Markers.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DA48F303F2E7249A6C2F0DE /* libPods-AL Historic Markers.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2CAA7DB8D3CD1C031C042863 /* Pods-AL Historic Markers.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AL Historic Markers.release.xcconfig"; path = "Pods/Target Support Files/Pods-AL Historic Markers/Pods-AL Historic Markers.release.xcconfig"; sourceTree = "<group>"; };
 		2EA518D4214EB1A100619790 /* Marker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Marker.swift; sourceTree = "<group>"; };
+		2EAA2901214EFE5900D0F19C /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		2EFC5A50214D9237003029E5 /* AL Historic Markers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AL Historic Markers.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EFC5A53214D9237003029E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2EFC5A56214D9237003029E5 /* AL_Historic_Markers.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AL_Historic_Markers.xcdatamodel; sourceTree = "<group>"; };
@@ -28,6 +32,8 @@
 		2EFC5A5F214D9239003029E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2EFC5A62214D9239003029E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2EFC5A64214D9239003029E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		42C8A744869B58AFC144868F /* Pods-AL Historic Markers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AL Historic Markers.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AL Historic Markers/Pods-AL Historic Markers.debug.xcconfig"; sourceTree = "<group>"; };
+		4DA48F303F2E7249A6C2F0DE /* libPods-AL Historic Markers.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AL Historic Markers.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,17 +41,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CD09FD94007751072FF96F6 /* libPods-AL Historic Markers.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B8D50C74D4693556304F50B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				42C8A744869B58AFC144868F /* Pods-AL Historic Markers.debug.xcconfig */,
+				2CAA7DB8D3CD1C031C042863 /* Pods-AL Historic Markers.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		2EFC5A47214D9237003029E5 = {
 			isa = PBXGroup;
 			children = (
+				2EAA2901214EFE5900D0F19C /* Podfile */,
 				2EFC5A52214D9237003029E5 /* AL Historic Markers */,
 				2EFC5A51214D9237003029E5 /* Products */,
+				0B8D50C74D4693556304F50B /* Pods */,
+				9A6B56D6B298F686F5A0E2A5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -73,6 +92,14 @@
 			path = "AL Historic Markers";
 			sourceTree = "<group>";
 		};
+		9A6B56D6B298F686F5A0E2A5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4DA48F303F2E7249A6C2F0DE /* libPods-AL Historic Markers.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -80,6 +107,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2EFC5A67214D9239003029E5 /* Build configuration list for PBXNativeTarget "AL Historic Markers" */;
 			buildPhases = (
+				ECFE4EE539D9189B83838396 /* [CP] Check Pods Manifest.lock */,
 				2EFC5A4C214D9237003029E5 /* Sources */,
 				2EFC5A4D214D9237003029E5 /* Frameworks */,
 				2EFC5A4E214D9237003029E5 /* Resources */,
@@ -132,11 +160,33 @@
 			files = (
 				2EFC5A63214D9239003029E5 /* LaunchScreen.storyboard in Resources */,
 				2EFC5A60214D9239003029E5 /* Assets.xcassets in Resources */,
+				2EAA2902214EFE5900D0F19C /* Podfile in Resources */,
 				2EFC5A5E214D9237003029E5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		ECFE4EE539D9189B83838396 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AL Historic Markers-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2EFC5A4C214D9237003029E5 /* Sources */ = {
@@ -289,6 +339,7 @@
 		};
 		2EFC5A68214D9239003029E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 42C8A744869B58AFC144868F /* Pods-AL Historic Markers.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -307,6 +358,7 @@
 		};
 		2EFC5A69214D9239003029E5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2CAA7DB8D3CD1C031C042863 /* Pods-AL Historic Markers.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

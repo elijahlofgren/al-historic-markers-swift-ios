@@ -9,6 +9,7 @@ import UIKit
 import CoreLocation
 import MapKit
 
+
 class DetailViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet weak var map: MKMapView!
@@ -25,6 +26,30 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate {
                 label.text = detail.timestamp!.description
             }
         }
+        
+        // TODO: switch to using core data to cache data
+        // Asynchronous Http call to your api url, using URLSession:
+        // From https://stackoverflow.com/a/35586622/908677
+        URLSession.shared.dataTask(with: URL(string: "https://s3.amazonaws.com/al-historic-markers-public-data/al-historic-markers.json")!) { (data, response, error) -> Void in
+            // Check if data was received successfully
+            if error == nil && data != nil {
+                do {
+                    // Convert to dictionary where keys are of type String, and values are of any type
+                    let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as! [String: [[String]]]
+                    // Access specific key with value of type String
+                    let values = json["values"] as? [[String]]
+                    
+                    /*for row in values {
+                        for cell in row {
+                            Swift.print(cell);
+                        }*/
+                    
+                    }
+                } catch {
+                    // Something went wrong
+                }
+            }
+            }.resume()
     }
     
     // Begin adapted from https://stackoverflow.com/a/33591128/908677
