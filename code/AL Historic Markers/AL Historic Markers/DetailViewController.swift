@@ -8,7 +8,7 @@
 import UIKit
 import CoreLocation
 import MapKit
-
+import SwiftyJSON
 
 class DetailViewController: UIViewController, CLLocationManagerDelegate {
 
@@ -34,17 +34,30 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate {
             // Check if data was received successfully
             if error == nil && data != nil {
                 do {
+                    let json = try JSON(data: data!)
+                    if let rows = json["values"].array {
+                        for i in 0..<rows.count {
+                            let rowArray = rows[i].array;
+                            for j in 0..<rowArray!.count {
+                                let column = rowArray![j]
+                                //Now you got your value
+                                Swift.print(column);
+                            }
+                        }
+
+                    }
+                    
                     // Convert to dictionary where keys are of type String, and values are of any type
-                    let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as! [String: [[String]]]
+                    //let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as! [String: [[String]]]
                     // Access specific key with value of type String
-                    let values = json["values"] as? [[String]]
+                   // let values = json["values"] as? [[String]]
                     
                     /*for row in values {
                         for cell in row {
                             Swift.print(cell);
-                        }*/
+                        }
                     
-                    }
+                    }*/
                 } catch {
                     // Something went wrong
                 }
