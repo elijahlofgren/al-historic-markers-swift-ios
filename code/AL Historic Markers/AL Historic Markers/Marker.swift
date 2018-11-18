@@ -7,7 +7,7 @@
 
 import MapKit
 
-class Marker: NSObject, MKAnnotation {
+class MyMarker: NSObject, MKAnnotation {
     let title: String?
     let detailedInfo: String
     let county: String

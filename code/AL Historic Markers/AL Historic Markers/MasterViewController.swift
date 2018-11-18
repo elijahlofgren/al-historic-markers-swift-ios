@@ -7,12 +7,51 @@
 
 import UIKit
 import CoreData
+import SwiftyJSON
 
 class MasterViewController: UITableViewController, NSFetchedResultsControllerDelegate {
 
     var detailViewController: DetailViewController? = nil
     var managedObjectContext: NSManagedObjectContext? = nil
 
+    func configureView() {
+        // TODO: switch to using core data to cache data
+        // Asynchronous Http call to your api url, using URLSession:
+        // From https://stackoverflow.com/a/35586622/908677
+        URLSession.shared.dataTask(with: URL(string: "https://s3.amazonaws.com/al-historic-markers-public-data/al-historic-markers.json")!) { (data, response, error) -> Void in
+            // Check if data was received successfully
+            if error == nil && data != nil {
+                do {
+                    let json = try JSON(data: data!)
+                    if let rows = json["values"].array {
+                        for i in 0..<rows.count {
+                            let rowArray = rows[i].array;
+                            for j in 0..<rowArray!.count {
+                                let column = rowArray![j]
+                                //Now you got your value
+                                Swift.print(column);
+                            }
+                        }
+                        
+                    }
+                    
+                    // Convert to dictionary where keys are of type String, and values are of any type
+                    //let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as! [String: [[String]]]
+                    // Access specific key with value of type String
+                    // let values = json["values"] as? [[String]]
+                    
+                    /*for row in values {
+                     for cell in row {
+                     Swift.print(cell);
+                     }
+                     
+                     }*/
+                } catch {
+                    // Something went wrong
+                }
+            }
+            }.resume()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +64,9 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
             let controllers = split.viewControllers
             detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
+        
+        // Do any additional setup after loading the view
+        configureView()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -40,10 +82,10 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     @objc
     func insertNewObject(_ sender: Any) {
         let context = self.fetchedResultsController.managedObjectContext
-        let newEvent = Event(context: context)
+        let newEvent = Marker(context: context)
              
         // If appropriate, configure the new managed object.
-        newEvent.timestamp = Date()
+        newEvent.name = "New marker"
 
         // Save the context.
         do {
@@ -109,24 +151,24 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         }
     }
 
-    func configureCell(_ cell: UITableViewCell, withEvent event: Event) {
-        cell.textLabel!.text = event.timestamp!.description
+    func configureCell(_ cell: UITableViewCell, withEvent marker: Marker) {
+        cell.textLabel!.text = marker.name
     }
 
     // MARK: - Fetched results controller
 
-    var fetchedResultsController: NSFetchedResultsController<Event> {
+    var fetchedResultsController: NSFetchedResultsController<Marker> {
         if _fetchedResultsController != nil {
-            return _fetchedResultsController!
+            return _fetchedResultsController! as! NSFetchedResultsController<Marker>
         }
         
-        let fetchRequest: NSFetchRequest<Event> = Event.fetchRequest()
+        let fetchRequest: NSFetchRequest<Marker> = Marker.fetchRequest()
         
         // Set the batch size to a suitable number.
         fetchRequest.fetchBatchSize = 20
         
         // Edit the sort key as appropriate.
-        let sortDescriptor = NSSortDescriptor(key: "timestamp", ascending: false)
+        let sortDescriptor = NSSortDescriptor(key: "name", ascending: false)
         
         fetchRequest.sortDescriptors = [sortDescriptor]
         
@@ -134,7 +176,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         // nil for section name key path means "no sections".
         let aFetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext!, sectionNameKeyPath: nil, cacheName: "Master")
         aFetchedResultsController.delegate = self
-        _fetchedResultsController = aFetchedResultsController
+        _fetchedResultsController = aFetchedResultsController as! NSFetchedResultsController<Event>
         
         do {
             try _fetchedResultsController!.performFetch()
@@ -145,7 +187,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
              fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
         
-        return _fetchedResultsController!
+        return _fetchedResultsController! as! NSFetchedResultsController<Marker>
     }    
     var _fetchedResultsController: NSFetchedResultsController<Event>? = nil
 
@@ -171,9 +213,9 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
             case .delete:
                 tableView.deleteRows(at: [indexPath!], with: .fade)
             case .update:
-                configureCell(tableView.cellForRow(at: indexPath!)!, withEvent: anObject as! Event)
+                configureCell(tableView.cellForRow(at: indexPath!)!, withEvent: anObject as! Marker)
             case .move:
-                configureCell(tableView.cellForRow(at: indexPath!)!, withEvent: anObject as! Event)
+                configureCell(tableView.cellForRow(at: indexPath!)!, withEvent: anObject as! Marker)
                 tableView.moveRow(at: indexPath!, to: newIndexPath!)
         }
     }

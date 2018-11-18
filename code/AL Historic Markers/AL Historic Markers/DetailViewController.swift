@@ -23,46 +23,9 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate {
         // Update the user interface for the detail item.
         if let detail = detailItem {
             if let label = detailDescriptionLabel {
-                label.text = detail.timestamp!.description
+                label.text = detail.name
             }
         }
-        
-        // TODO: switch to using core data to cache data
-        // Asynchronous Http call to your api url, using URLSession:
-        // From https://stackoverflow.com/a/35586622/908677
-        URLSession.shared.dataTask(with: URL(string: "https://s3.amazonaws.com/al-historic-markers-public-data/al-historic-markers.json")!) { (data, response, error) -> Void in
-            // Check if data was received successfully
-            if error == nil && data != nil {
-                do {
-                    let json = try JSON(data: data!)
-                    if let rows = json["values"].array {
-                        for i in 0..<rows.count {
-                            let rowArray = rows[i].array;
-                            for j in 0..<rowArray!.count {
-                                let column = rowArray![j]
-                                //Now you got your value
-                                Swift.print(column);
-                            }
-                        }
-
-                    }
-                    
-                    // Convert to dictionary where keys are of type String, and values are of any type
-                    //let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as! [String: [[String]]]
-                    // Access specific key with value of type String
-                   // let values = json["values"] as? [[String]]
-                    
-                    /*for row in values {
-                        for cell in row {
-                            Swift.print(cell);
-                        }
-                    
-                    }*/
-                } catch {
-                    // Something went wrong
-                }
-            }
-            }.resume()
     }
     
     // Begin adapted from https://stackoverflow.com/a/33591128/908677
@@ -74,7 +37,7 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate {
         
         
         // Show a marker on a map (hard-coded for now)
-        let marker = Marker(title: "Your location",
+        let marker = MyMarker(title: "Your location",
                               detailedInfo: "test description",
                               county: "N/A",
                               coordinate: CLLocationCoordinate2D(latitude: userLocation.latitude, longitude: userLocation.longitude))
@@ -108,7 +71,7 @@ class DetailViewController: UIViewController, CLLocationManagerDelegate {
         configureView()
     }
 
-    var detailItem: Event? {
+    var detailItem: Marker? {
         didSet {
             // Update the view.
             configureView()
